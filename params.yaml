@@ -1,0 +1,7 @@
+make_dataset:
+ test_size: 0.1
+
+train_model:
+ max_depth: 100
+ min_samples_split: 5
+ min_samples_leaf: 10

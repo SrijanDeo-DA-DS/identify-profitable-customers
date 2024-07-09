@@ -1,0 +1,74 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python src/data/make_dataset.py
+    deps:
+    - path: src/data/make_dataset.py
+      hash: md5
+      md5: 614b4da8df83e50b2bcb24201a114185
+      size: 2272
+    params:
+      params.yaml:
+        make_dataset.test_size: 0.1
+    outs:
+    - path: data/interim
+      hash: md5
+      md5: 7d477695083124ea604e639a9161c2f5.dir
+      size: 2309350
+      nfiles: 2
+  data_preprocessing:
+    cmd: python src/features/build_features.py
+    deps:
+    - path: data/interim
+      hash: md5
+      md5: 7d477695083124ea604e639a9161c2f5.dir
+      size: 2309350
+      nfiles: 2
+    - path: src/features/build_features.py
+      hash: md5
+      md5: b9476164321395079b1fd3d38eb49937
+      size: 2302
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 963fbf64000149ec3b9ebd810b49495f.dir
+      size: 5590310
+      nfiles: 2
+  model_building:
+    cmd: python src/models/train_model.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 963fbf64000149ec3b9ebd810b49495f.dir
+      size: 5590310
+      nfiles: 2
+    - path: src/models/train_model.py
+      hash: md5
+      md5: 02e216994ab5c302a2377db3d0379708
+      size: 842
+    params:
+      params.yaml:
+        train_model.max_depth: 100
+        train_model.min_samples_leaf: 10
+        train_model.min_samples_split: 5
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: 83c4f79e6070ed31409bee24875ed171
+      size: 8697170
+  model_evaluation:
+    cmd: python src/model_evaluation/model_evaluation.py
+    deps:
+    - path: models/model.pkl
+      hash: md5
+      md5: 83c4f79e6070ed31409bee24875ed171
+      size: 8697170
+    - path: src/models/train_model.py
+      hash: md5
+      md5: 02e216994ab5c302a2377db3d0379708
+      size: 842
+    outs:
+    - path: metrics.json
+      hash: md5
+      md5: bacffbbe1e15f13f1966cc45ce7c8ba0
+      size: 707

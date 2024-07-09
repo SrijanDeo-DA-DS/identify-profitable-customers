@@ -1,0 +1,35 @@
+stages:
+  data_ingestion:
+    cmd: python src/data/make_dataset.py
+    deps:
+    - src/data/make_dataset.py
+    params:
+    - make_dataset.test_size
+    outs:
+    - data/interim
+
+  data_preprocessing:
+    cmd: python src/features/build_features.py
+    deps:
+    - data/interim
+    - src/features/build_features.py
+    outs:
+    - data/processed
+  model_building:
+    cmd: python src/models/train_model.py
+    deps:
+    - data/processed
+    - src/models/train_model.py
+    params:
+    - train_model.max_depth
+    - train_model.min_samples_split
+    - train_model.min_samples_leaf
+    outs:
+    - models/model.pkl
+  model_evaluation:
+    cmd: python src/model_evaluation/model_evaluation.py
+    deps:
+    - models/model.pkl
+    - src/models/train_model.py
+    metrics:
+    - metrics.json
