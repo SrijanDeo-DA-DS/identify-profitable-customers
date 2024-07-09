@@ -1,7 +1,7 @@
 identify-profitable-customers
 ==============================
 
-THis project can help identify our profitable customers, visualize their spending habits, recommend similar customers based on spending and explain what factors contribute for profitable customers.
+This project can help identify our profitable customers, visualize their spending habits, recommend similar customers based on spending and explain what factors contribute for profitable customers.
 
 Project Organization
 ------------
