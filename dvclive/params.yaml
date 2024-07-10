@@ -1,4 +1,4 @@
-make_dataset_test_size: 0.2
-train_model_max_depth: 15
-train_model_min_samples_split: 5
-train_model_min_samples_leaf: 10
+make_dataset_test_size: 0.25
+train_model_max_depth: 25
+train_model_min_samples_split: 3
+train_model_min_samples_leaf: 20

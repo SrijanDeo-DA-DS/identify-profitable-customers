@@ -9,11 +9,11 @@ stages:
       size: 2272
     params:
       params.yaml:
-        make_dataset.test_size: 0.2
+        make_dataset.test_size: 0.25
     outs:
     - path: data/interim
       hash: md5
-      md5: a895a442f1edea8f97d66708d0dbce52.dir
+      md5: 9f4a08cef0b51823b6eeac5d9ef8ec8d.dir
       size: 2309350
       nfiles: 2
   data_preprocessing:
@@ -21,7 +21,7 @@ stages:
     deps:
     - path: data/interim
       hash: md5
-      md5: a895a442f1edea8f97d66708d0dbce52.dir
+      md5: 9f4a08cef0b51823b6eeac5d9ef8ec8d.dir
       size: 2309350
       nfiles: 2
     - path: src/features/build_features.py
@@ -31,16 +31,16 @@ stages:
     outs:
     - path: data/processed
       hash: md5
-      md5: 40e4f7d264208397aea89b027010f545.dir
-      size: 5710193
+      md5: 3a6c829ec8c0fdbdcbb22138e3a7cd38.dir
+      size: 5708644
       nfiles: 2
   model_building:
     cmd: python src/models/train_model.py
     deps:
     - path: data/processed
       hash: md5
-      md5: 40e4f7d264208397aea89b027010f545.dir
-      size: 5710193
+      md5: 3a6c829ec8c0fdbdcbb22138e3a7cd38.dir
+      size: 5708644
       nfiles: 2
     - path: src/models/train_model.py
       hash: md5
@@ -48,21 +48,21 @@ stages:
       size: 842
     params:
       params.yaml:
-        train_model.max_depth: 15
-        train_model.min_samples_leaf: 10
-        train_model.min_samples_split: 5
+        train_model.max_depth: 25
+        train_model.min_samples_leaf: 20
+        train_model.min_samples_split: 3
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 94c79abef1a271fbe5b972b8db8f3c38
-      size: 7040156
+      md5: c86b64d43a631113d2aa5671bfccd92d
+      size: 4275760
   model_evaluation:
     cmd: python src/model_evaluation/model_evaluation.py
     deps:
     - path: models/model.pkl
       hash: md5
-      md5: 94c79abef1a271fbe5b972b8db8f3c38
-      size: 7040156
+      md5: c86b64d43a631113d2aa5671bfccd92d
+      size: 4275760
     - path: src/models/train_model.py
       hash: md5
       md5: 02e216994ab5c302a2377db3d0379708
@@ -70,5 +70,5 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: 25b1c013b9135e791d7106a3f7404013
-      size: 150
+      md5: 920165665d1e735bad863ffb7c27b5ec
+      size: 149
