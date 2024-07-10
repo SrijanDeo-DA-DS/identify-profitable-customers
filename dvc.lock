@@ -50,19 +50,19 @@ stages:
       params.yaml:
         train_model.max_depth: 25
         train_model.min_samples_leaf: 20
-        train_model.min_samples_split: 3
+        train_model.min_samples_split: 20
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: c86b64d43a631113d2aa5671bfccd92d
-      size: 4275760
+      md5: 5ef52be5dabe3924e2c4156122b854d8
+      size: 4278480
   model_evaluation:
     cmd: python src/model_evaluation/model_evaluation.py
     deps:
     - path: models/model.pkl
       hash: md5
-      md5: c86b64d43a631113d2aa5671bfccd92d
-      size: 4275760
+      md5: 5ef52be5dabe3924e2c4156122b854d8
+      size: 4278480
     - path: src/models/train_model.py
       hash: md5
       md5: 02e216994ab5c302a2377db3d0379708
@@ -70,5 +70,5 @@ stages:
     outs:
     - path: metrics.json
       hash: md5
-      md5: 920165665d1e735bad863ffb7c27b5ec
-      size: 149
+      md5: ed6d3fe3bdae99e6c6b29906bf78150c
+      size: 150

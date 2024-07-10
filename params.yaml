@@ -1,7 +1,7 @@
 make_dataset:
- test_size: 0.25
+  test_size: 0.25
 
 train_model:
- max_depth: 25
- min_samples_split: 3
- min_samples_leaf: 20
+  max_depth: 25
+  min_samples_split: 20
+  min_samples_leaf: 20
