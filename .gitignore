@@ -5,6 +5,9 @@ __pycache__/
 # environment
 myenv
 
+## artifacts
+artifacts
+
 # C extensions
 *.so
 
