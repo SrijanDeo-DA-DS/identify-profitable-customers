@@ -7,7 +7,7 @@ st.set_page_config(page_title="Recommender Systems")
 
 st.title("Recommend Similar Customers")
 
-df = pd.read_csv('C:/Users/Srijan-DS/Documents/Projects/identify-profit-customer-profile/data/raw/raw.csv')
+df = pd.read_csv('C:/Users/Srijan-DS/Documents/Projects/identify-profitable-customers/data/raw/raw.csv')
 
 df = df.sample(n=5000, random_state=42)
 
@@ -61,12 +61,12 @@ if st.button('Filter'):
 
     st.dataframe(new_df_1)
 
-selected_customer = int(st.selectbox('Select Customer ID for Recommendation', sorted(df.index.to_list())))
+    selected_customer = int(st.selectbox('Select Customer ID for Recommendation', sorted(new_df_1.index.to_list())))
 
-if st.button('Recommend'):
-    recommendation_df = recommend_customers(df.index.to_list(),cosine_sim1,cosine_sim2)
+    if st.button('Recommend'):
+        recommendation_df = recommend_customers(new_df_1.index.to_list(),cosine_sim1,cosine_sim2)
 
-    if not recommendation_df.empty:
-        st.dataframe(recommendation_df)
-    else:
-        st.write('No recommendations found.')
+        if not recommendation_df.empty:
+            st.dataframe(recommendation_df)
+        else:
+            st.write('No recommendations found.')
