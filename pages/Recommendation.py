@@ -63,10 +63,13 @@ if st.button('Filter'):
 
     selected_customer = int(st.selectbox('Select Customer ID for Recommendation', sorted(new_df_1.index.to_list())))
 
-    if st.button('Recommend'):
-        recommendation_df = recommend_customers(new_df_1.index.to_list(),cosine_sim1,cosine_sim2)
+    st.write(f"Top 5 customers related to Customer_ID {selected_customer} are: ")
 
-        if not recommendation_df.empty:
-            st.dataframe(recommendation_df)
-        else:
-            st.write('No recommendations found.')
+if st.button('Recommend'):
+    
+    recommendation_df = recommend_customers(df.index.to_list(),cosine_sim1,cosine_sim2)
+
+    if not recommendation_df.empty:
+        st.dataframe(recommendation_df)
+    else:
+        st.write('No recommendations found.')

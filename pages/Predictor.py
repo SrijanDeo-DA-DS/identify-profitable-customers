@@ -11,7 +11,11 @@ pipe = pickle.load(open('C:/Users/Srijan-DS/Documents/Projects/identify-profitab
 
 model = pickle.load(open('C:/Users/Srijan-DS/Documents/Projects/identify-profitable-customers/artifacts/model.pkl','rb'))
 
+B = pickle.load(open('C:/Users/Srijan-DS/Documents/Projects/identify-profitable-customers/artifacts/training_data_order.pkl','rb'))
+
 st.header('Enter your inputs')
+
+options = [0,1]
 
     # Define the form components
 purchase_amount = float(st.number_input("Purchase Amount"))
@@ -21,7 +25,7 @@ personal_id_1 = float(st.number_input("Personal ID 1"))
 personal_id_2 = float(st.number_input("Personal ID 2"))
 age = st.selectbox("Age", sorted(df['age'].unique().tolist()))
 area = float(st.number_input("Area"))
-job_type = st.selectbox("Job Type", df['job_type_Self employed'].unique().tolist())
+job_type_1 = st.selectbox("job_type_Self employed", options)
 phone = st.selectbox("Phone", df['phone'].unique().tolist())
 personal_card_1 = st.selectbox("Personal Card 1", df['personal_card_1'].unique().tolist())
 personal_card_2 = st.selectbox("Personal Card 2", df['personal_card_2'].unique().tolist())
@@ -50,7 +54,7 @@ user_input = {
     "personal_id_2": personal_id_2,
     "age": age,
     "area": area,
-    "job_type": job_type,
+    "job_type_Self employed": job_type_1,
     "phone": phone,
     "personal_card_1": personal_card_1,
     "personal_card_2": personal_card_2,
@@ -79,6 +83,13 @@ if st.button('Predict'):
 
     #df_transformed = pipe.transform(one_df)
 
-    prediction = model.predict(one_df)
+    one_df = one_df.reindex(columns=B.columns)
 
-    st.text("The customer will {}".format(prediction[0]))
+    prediction = model.predict(one_df)[0]
+
+    if prediction == 0:
+        result = 'Non-Profitable'
+    else:
+        result = 'Profitable'
+
+    st.text(f"The customer is: {result}")
