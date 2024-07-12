@@ -29,3 +29,14 @@ Users can visually see what all factors were responsible in our model's output o
 ## 4. Recommnder System
 Users can get recommendation of Top 5 similar customers based on their Customer IDs for better marketing
 ![recommender](https://github.com/user-attachments/assets/28ac6974-e0e9-443b-83b1-c0abf4dad63d)
+
+## MLflow
+Used mlflow to track the model performance in different experiments. Also tracked models, code, images and other artifacts
+![mlflow](https://github.com/user-attachments/assets/f63a6704-1d67-4c21-8de1-aa2eba22c3df)
+Metrics -
+![metrics](https://github.com/user-attachments/assets/e4950075-e75e-4987-9df9-fdae5b463ef9)
+Arifacts -
+![artifacts](https://github.com/user-attachments/assets/9b00aafa-11d3-406e-b48d-0f41253d9f63)
+
+
+
