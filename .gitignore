@@ -7,7 +7,7 @@ myenv
 
 ## artifacts
 artifacts
-
+mlruns
 # C extensions
 *.so
 
