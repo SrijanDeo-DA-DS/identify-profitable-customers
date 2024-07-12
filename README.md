@@ -1,7 +1,11 @@
 identify-profitable-customers
 ==============================
 
-This project can help identify our profitable customers, visualize their spending habits, recommend similar customers based on spending and explain what factors contribute for profitable customers.
+This project aims to help business understand their Customers and increase CLV, targetted campaigning and retaining profitable customers by reducing Churn. There are 4 modules : -
+1. Data Analytics : Understand your customer's demographics like Age/ Spending score/ Total income etc. in a comprehensive way and strategize your business around it
+2. Predictor : If ever in doubt for a customer, use this tool to predict if a particular Customer will be profitable for your business or not. This is trained on the historic customer database and their behaviour
+3. Explainability : Get detailed insights and root level reasons as to why a particular customer was tagged as 'Profitable' or 'Non-Profitable' by our model, what all features were important for the decision.
+4. Recommender System : For running targeted campaigns, idenfity your Top 5 similar customers to the customer of your choice and increase the chance of business
 
 ## Code and Resources Used
 * Python Version: 3.11
