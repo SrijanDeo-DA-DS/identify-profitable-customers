@@ -9,7 +9,9 @@ This project aims to help business understand their Customers and increase CLV, 
 
 ## Code and Resources Used
 * Python Version: 3.11
-* Packages: pandas, numpy, sklearn, seaborn, streamlit, dvc, mlflow
+* Packages: pandas, numpy, sklearn, seaborn, streamlit
+* Data Versioning: dvc
+* Model tracking: mlflow
 * For Web Framework Requirements: pip install -r requirements.txt
 
 ## Website Features
